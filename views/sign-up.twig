@@ -1,0 +1,18 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <div>{{ title }}</div>
+  <div>{{ instructions }}</div>
+  {% for error in errors %}
+    <div>{{ error }}</div>
+  {% endfor %}
+  <form action="/users/sign-up" method="POST" enctype="multipart/form-data">
+    <label>{{ forenameLabel }}<input type="text" name="forename" value="{{ body.forename }}" required autofocus /></label>
+    <label>{{ surnameLabel }}<input type="text" name="surname" value="{{ body.surname }}" required /></label>
+    <label>{{ emailLabel }}<input type="email" name="email" value="{{ body.email }}" autocomplete="email" required /></label>
+    <label>{{ passwordLabel }}<input type="password" name="password" autocomplete="current-password" required /></label>
+    <label>{{ fileLabel }}<input type="file" name="my_file" required /></label>
+    <input type="submit" name="submit" value="submit">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+  </form>
+{% endblock %}

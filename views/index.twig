@@ -1,0 +1,15 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <div>{{ title }}</div>
+  <div>{{ introduction }}</div>
+  {% if user is defined %}
+    <div>{{ authTrueInfo }}{{ user.forename }} {{ user.surname }}</div>
+    <a href="/main/entity">{{ mainEntity }}</a>
+    <a href="/users/sign-out">{{ signOut }}</a>
+  {% else %}
+    <div>{{ authFalseInfo }}</div>
+    <a href="/users/sign-up">{{ signUp }}</a>
+    <a href="/users/sign-in/home">{{ signIn }}</a>
+  {% endif %}
+{% endblock %}
